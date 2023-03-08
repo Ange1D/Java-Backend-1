@@ -2,9 +2,7 @@ package org.bedu.java.backend.sesion4.controllers;
 
 
 import org.bedu.java.backend.sesion4.model.Saludo;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class SaludoController {
@@ -26,4 +24,25 @@ public class SaludoController {
 
         return saludo;
     }
+
+    @PostMapping("/saludo")
+    public Saludo saludaPost(@RequestBody Saludo saludo){
+        return saludo;
+    }
+
+    @PutMapping("/saludo")
+    public Saludo saluda(@RequestBody Saludo saludo){
+
+        saludo.setFechaNacimiento(saludo.getFechaNacimiento().plusDays(1));
+
+        return saludo;
+    }
+
+    @DeleteMapping("/saludo/{id}")
+    public String saludaDel(@PathVariable int id){
+
+        return id + " eliminado";
+
+    }
+
 }
